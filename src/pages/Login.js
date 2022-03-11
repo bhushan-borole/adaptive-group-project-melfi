@@ -9,21 +9,13 @@ function Login() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    setError('');
+    setError("");
     try {
       await signin(email, password);
     } catch (error) {
       setError(error.message);
     }
-  }
-
-  const githubSignIn = async (event) => {
-    try {
-      await signInWithGitHub();
-    } catch (error) {
-      setError(error.message);
-    }
-  }
+  };
 
   const googleSignIn = async (event) => {
     try {
@@ -31,26 +23,29 @@ function Login() {
     } catch (error) {
       setError(error.message);
     }
-  }
+  };
 
   return (
     <div className="container">
       <form
         className="mt-5 py-5 px-5"
         autoComplete="off"
-        onSubmit={handleSubmit}>
+        onSubmit={handleSubmit}
+      >
         <h1 style={{ color: "#74808a" }}>
           Login to
-          <Link className="title ml-2" to="/justalk">Justalk</Link>
+          <Link className="title ml-2" to="/dr-melfi">
+            Dr. Melfi
+          </Link>
         </h1>
-        <br/>
+        <br />
         <div className="form-group">
           <input
             className="form-control"
             placeholder="Email"
             name="email"
             type="email"
-            onChange={e => setEmail(e.target.value)} 
+            onChange={(e) => setEmail(e.target.value)}
             value={email}
           />
         </div>
@@ -59,30 +54,34 @@ function Login() {
             className="form-control"
             placeholder="Password"
             name="password"
-            onChange={e => setPassword(e.target.value)} 
+            onChange={(e) => setPassword(e.target.value)}
             value={password}
             type="password"
           />
         </div>
         <div className="form-group">
-          {error ? ( <p className="text-danger">{error}</p> ) : null}
-          <button className="btn btn-primary px-5" type="submit">Login</button>
+          {error ? <p className="text-danger">{error}</p> : null}
+          <button className="btn btn-primary px-5" type="submit">
+            Login
+          </button>
         </div>
-        <p style={{ color: "rgb(116, 128, 138)" }}>You can also log in with any of these services</p>
-        <button className="btn btn-danger mr-2" type="button" onClick={googleSignIn}>
+        <p style={{ color: "rgb(116, 128, 138)" }}>
+          You can also log in with any of these services
+        </p>
+        <button
+          className="btn btn-danger mr-2"
+          type="button"
+          onClick={googleSignIn}
+        >
           Sign in with Google
-        </button>
-        <button className="btn btn-secondary" type="button" onClick={githubSignIn}>
-          Sign in with GitHub
         </button>
         <hr />
         <p style={{ color: "rgb(116, 128, 138)" }}>
-          Don't have an account? <Link to="/justalk/signup">Sign up</Link>
+          Don't have an account? <Link to="/dr-melfi/signup">Sign up</Link>
         </p>
       </form>
-
     </div>
-  )
+  );
 }
 
-export default Login
+export default Login;
