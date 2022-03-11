@@ -102,6 +102,8 @@ function SignUp() {
         </div>
         <div className="form-group row">
           {error ? <p className="text-danger">{error}</p> : null}
+        </div>
+        <div className="form-group row">
           <button className="btn btn-primary px-5" type="submit">
             Sign up
           </button>
